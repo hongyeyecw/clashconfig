@@ -28,10 +28,6 @@
         "detour": "🎯 全球直连"
       },
       {
-        "tag": "fakeip",
-        "address": "fakeip"
-      },
-      {
         "tag": "block",
         "address": "rcode://success"
       }
@@ -43,6 +39,10 @@
         "disable_cache": true
       },
       {
+        "rule_set": "geosite-cn",
+        "server": "localDns"
+      },
+      {
         "clash_mode": "direct",
         "server": "localDns"
       },
@@ -51,37 +51,12 @@
         "server": "proxyDns"
       },
       {
-        "rule_set": "geosite-cn",
-        "server": "localDns"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "rule_set": "geosite-geolocation-!cn",
-        "server": "fakeip"
-      },
-      {
         "rule_set": "geosite-geolocation-!cn",
         "server": "proxyDns"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip"
       }
     ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
     "final": "localDns",
-    "independent_cache": true,
-    "strategy": "prefer_ipv4"
+    "strategy": "ipv4_only"
   },
   "inbounds": [
     {
@@ -96,14 +71,14 @@
         "http_proxy": {
           "enabled": true,
           "server": "0.0.0.0",
-          "server_port": 2080
+          "server_port": 7890
         }
       }
     },
     {
       "type": "mixed",
       "listen": "0.0.0.0",
-      "listen_port": 2080,
+      "listen_port": 7892,
       "sniff": true,
       "users": []
     }
@@ -312,18 +287,6 @@
       "tolerance": 50
     },
     {
-      "tag": "🐟 漏网之鱼",
-      "type": "selector",
-      "outbounds": [
-        "🚀 节点选择",
-        "🎯 全球直连",
-        "🇭🇰 香港节点",
-        "🇯🇵 日本节点",
-        "🇺🇲 美国节点",
-        "🐸 手动切换"
-      ]
-    },
-    {
       "tag": "GLOBAL",
       "type": "selector",
       "outbounds": [
@@ -346,7 +309,7 @@
   ],
   "route": {
     "auto_detect_interface": true,
-    "final": "🐟 漏网之鱼",
+    "final": "GLOBAL",
     "rules": [
       {
         "type": "logical",
