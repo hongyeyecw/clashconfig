@@ -2,7 +2,8 @@
   "log": {
     "disabled": false,
     "level": "warn",
-    "timestamp": true
+    "timestamp": true,
+    "beizhu": "ceshiyixia"
   },
   "dns": {
     "servers": [
